@@ -94,7 +94,8 @@ return n.a+n.b;
 Output:
 
 
-//paste your output here
+![exp 1 2](https://github.com/user-attachments/assets/ef73d191-1382-4b11-8197-30565f20177d)
+
 
 
 
