@@ -68,8 +68,25 @@ Algorithm:
 7.	Return 0
  
 Program:
+```#include<stdio.h> struct numbers
+{
+int a; int b;
+}n;
+int add(struct numbers n); int main()
+{
 
-//type your code here
+scanf("%d %d ",&n.a,&n.b);
+printf("%d",add(n));
+}
+int add(struct numbers n)
+{
+return n.a+n.b;
+}
+```
+
+
+
+
 
 
 
