@@ -210,7 +210,9 @@ printf("\nData added Successfully");
 Output:
 
 
-//paste your output here
+
+![exp 1 4](https://github.com/user-attachments/assets/c559dd00-2dac-415e-a5dc-18d6e4433b13)
+
 
 
 
