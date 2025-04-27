@@ -30,10 +30,10 @@ printf("Age:%d\nName:%svaccine:%d\neligibility:no",e.age,e.n,e.age);
  
 else
 {
+printf("Age:%d\nName:%svaccine:%d\neligibility:yes",e.age,e.n,e.age);
 }
  
 
-printf("Age:%d\nName:%svaccine:%d\neligibility:yes",e.age,e.n,e.age);
  
 
 }"
