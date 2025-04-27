@@ -185,7 +185,18 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 
-//type your code here
+```#include <stdio.h> int main()
+{
+FILE *p;
+char name[20]; int num;
+char text[50]; scanf("%s%d",name,&num); p=fopen("name","w"); printf("%s Opened",name); for(int i=0;i<num;i++)
+{
+scanf("%s",text); fputs(text,p);
+}
+printf("\nData added Successfully");
+
+}
+```
 
 
 
