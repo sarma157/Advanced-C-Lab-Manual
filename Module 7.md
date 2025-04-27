@@ -43,6 +43,8 @@ printf("Age:%d\nName:%svaccine:%d\neligibility:yes",e.age,e.n,e.age);
 
 
 Output:
+
+
 ![exp 1 ](https://github.com/user-attachments/assets/4c8f3215-deec-49c8-96ae-869e32df23b5)
 
 
