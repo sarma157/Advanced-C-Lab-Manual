@@ -145,7 +145,8 @@ printf("\n%s File Closed",name);
 Output:
 
 
-//paste your output here
+![exp 1 3](https://github.com/user-attachments/assets/46a3705f-3612-402e-b703-2548e8e64bc6)
+
 
 
 
