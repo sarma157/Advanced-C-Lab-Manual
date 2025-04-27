@@ -9,12 +9,107 @@ Algorithm:
 4.	Call the search function and perform other linked list operations as needed.
  
 Program:
+```
+#include <stdio.h>
+#include<stdlib.h>
+struct Node
+{
+    int data;
+    struct Node *next;
+};
 
-//type your code here
+struct Node * createNode(int value)
+{
+    struct Node *new_node =(struct Node *)malloc(sizeof(struct Node));
+    new_node->data=value;
+    new_node->next=NULL;
+    return new_node;
+}
 
+struct Node *insertatfront(struct Node * head, int new_data)
+{
+    struct Node *new_node=createNode (new_data);
+    new_node->next=head;
+    return new_node;
+}
+
+void insertatend(struct Node *head, int new_data)
+{
+    struct Node *curr=head;
+    struct Node *new_node=createNode(new_data);
+    while(curr->next!=NULL)
+    curr=curr->next;
+
+    curr->next=new_node;  
+}
+
+void printlist(struct Node *head)
+{
+    struct Node* curr=head;
+    while(curr!=NULL)
+    {
+        printf("%d ",curr->data);
+        curr=curr->next;
+    }
+    printf("\n");
+}
+ 
+ int search(struct Node *head, int dat)
+ {
+    int stat=0;
+    struct Node *t=head;
+    while(t!=NULL)
+    {
+        if(t->data==dat)
+        {
+            stat=1;
+            break;
+        }
+        t=t->next;
+    }
+    return stat;
+ }
+
+ void delete(struct Node **head,int dat)
+{
+struct Node* temp=*head,*prev;
+if(temp!=NULL && temp->data==dat)
+{
+    *head=temp->next;
+    free(temp);
+    return;
+}
+while(temp!=NULL && temp->data!=dat)
+{
+    prev=temp;
+    temp=temp->next;
+}
+if(temp==NULL)return;
+prev->next=temp->next;
+free(temp);
+}
+
+ void main( void)
+ {
+    struct Node* head=createNode(2);
+    head=insertatfront(head,10);
+    insertatend(head,98);
+    head=insertatfront(head,20);
+    insertatend(head,50);
+    printf("Printing the List\n");
+    printlist(head);
+    printf("After Deleting 20 from the list\n");
+    delete(&head,20);
+    printlist(head);
+    printf("\nSearch Element 20 %s\n",search(head,20)==1?"found":"Not Found");
+    printf("Search Element 98 %s\n",search(head,98)==1?"found":"Not Found");
+    return ;
+ }
+```
 Output:
 
-//paste your output here
+
+![4 1](https://github.com/user-attachments/assets/1bd28f56-c673-450f-8529-6f475c0fa650)
 
 
 
@@ -33,12 +128,82 @@ Algorithm:
 4.	Call the insert function and perform other linked list operations as needed.
  
 Program:
+```
+#include <stdio.h>
+#include<stdlib.h>
+struct Node
+{
+    int data;
+    struct Node *next;
+};
 
-//type your code here
+struct Node * createNode(int value)
+{
+    struct Node *new_node =(struct Node *)malloc(sizeof(struct Node));
+    new_node->data=value;
+    new_node->next=NULL;
+    return new_node;
+}
 
+void insertatend(struct Node *head, int new_data)
+{
+    struct Node *curr=head;
+    struct Node *new_node=createNode(new_data);
+    while(curr->next!=NULL)
+    curr=curr->next;
+
+    curr->next=new_node;  
+}
+
+void printlist(struct Node *head)
+{
+    struct Node* curr=head;
+    while(curr!=NULL)
+    {
+        printf("%d ",curr->data);
+        curr=curr->next;
+    }
+    printf("\n");
+}
+ 
+
+ void delete(struct Node **head,int dat)
+{
+struct Node* temp=*head,*prev;
+if(temp!=NULL && temp->data==dat)
+{
+    *head=temp->next;
+    free(temp);
+    return;
+}
+while(temp!=NULL && temp->data!=dat)
+{
+    prev=temp;
+    temp=temp->next;
+}
+if(temp==NULL)return;
+prev->next=temp->next;
+free(temp);
+}
+
+ int main()
+ {
+    struct Node* head=createNode(2);
+    insertatend(head,98);
+    insertatend(head,50);
+    insertatend(head,77);
+    printf("Printing the List\n");
+    printlist(head);
+    printf("After Deleting 20 from the list\n");
+    delete(&head,50);
+    printlist(head);
+    return 0 ;
+ }
+ ```
 Output:
 
-//paste your output here
+
+![4 2](https://github.com/user-attachments/assets/3117d8f4-cda5-4178-ba9a-2822aeae8902)
 
  
 Result:
@@ -57,12 +222,53 @@ Algorithm:
 4.	Move to the next node by updating the temp pointer to point to the next node (temp = temp->next).
  
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+struct Node {
+    int data;
+    struct Node* prev;
+    struct Node* next;
+};
 
+void display(struct Node* head) {
+    struct Node* temp = head;
+    
+    printf("Doubly Linked List Traversal:\n");
+    while (temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->prev = NULL;
+    newNode->next = NULL;
+    return newNode;
+}
+
+int main() {
+    struct Node* head = createNode(10);
+    struct Node* second = createNode(20);
+    struct Node* third = createNode(30);
+    head->next = second;
+    second->prev = head;
+    second->next = third;
+    third->prev = second;
+
+    display(head);
+
+    return 0;
+}
+```
 Output:
 
-//paste your output here
+
+![4 3](https://github.com/user-attachments/assets/7b036eec-7e85-482a-b802-ac276ae28ff7)
 
 
 Result:
@@ -82,12 +288,59 @@ Algorithm:
 5.	Set the new node's prev pointer to the last node and update the last node's next pointer to the new node.
  
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
+struct Node {
+    int data;
+    struct Node* prev;
+    struct Node* next;
+} *head;
 
-//type your code here
 
+void insert(int value) {
+    struct Node* n = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* temp = head;
+
+    if (n == NULL) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+
+    n->data = value;
+    n->prev = NULL;
+    n->next = NULL;
+    if (head == NULL) {
+        head = n;
+        return;
+    }
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = n;
+    n->prev = temp;
+}
+void display(struct Node* temp) {
+    printf("Doubly Linked List:\n");
+    while (temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+int main() {
+    insert(10);
+    insert(20);
+    insert(30);
+    display(head);
+
+    return 0;
+}
+```
 Output:
 
-//paste your output here
+
+![4 4](https://github.com/user-attachments/assets/711b50cc-8b35-497b-9ad8-1ce2b2a6f526)
 
 
 Result:
@@ -124,12 +377,86 @@ o	If the element is not found in any node, print a message indicating the elemen
 
 
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
+struct Node {
+    int data;
+    struct Node* next;
+}* head ; 
 
-//type your code here
+void insert(int value) {
+    struct Node* n = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* temp = head;
+    if (n == NULL) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+    n->data = value;
+    n->next = NULL;
+    if (head == NULL) {
+        head = n;
+        return;
+    }
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = n;
+}
 
+void delete(int value) {
+    struct Node* temp = head;
+    struct Node* prev = NULL;
+    if (head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+    if (head->data == value) {
+        head = head->next;
+        free(temp);
+        printf("Element %d deleted.\n", value);
+        return;
+    }
+    while (temp != NULL && temp->data != value) {
+        prev = temp;
+        temp = temp->next;
+    }
+    if (temp == NULL) {
+        printf("Element %d not found in the list.\n", value);
+        return;
+    }
+    prev->next = temp->next;
+    free(temp);
+    printf("Element %d deleted.\n", value);
+}
+
+void display(struct Node* temp) {
+    printf("Linked List: ");
+    while (temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n\n");
+}
+
+int main() {
+    insert(10);
+    insert(20);
+    insert(30);
+    insert(40);
+    printf("Before Deletion:\n");
+    display(head);
+    delete(20); 
+    delete(40); 
+    printf("\nAfter Deletion:\n");
+    display(head);
+    return 0;
+}
+```
 Output:
 
-//paste your output here
+
+![4 5](https://github.com/user-attachments/assets/609be5b9-35a5-48ee-920c-859b601381e5)
 
 
 
